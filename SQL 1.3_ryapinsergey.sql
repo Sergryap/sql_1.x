@@ -105,7 +105,8 @@ ORDER BY 3 DESC;
  --Для решения необходимо использовать декартово произведение.
 SELECT DISTINCT city.city, c.city
 FROM city
-CROSS JOIN (SELECT city FROM city) c;
+CROSS JOIN (SELECT city FROM city) c
+WHERE city.city != c.city;
  
 
 
