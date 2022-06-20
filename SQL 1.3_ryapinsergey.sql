@@ -116,7 +116,7 @@ CROSS JOIN (SELECT city FROM city) c;
 --и дате возврата фильма (поле return_date), 
 --вычислите для каждого покупателя среднее количество дней, за которые покупатель возвращает фильмы.
 SELECT customer_id, first_name||' ' ||last_name ФИО,
-round(AVG(return_date::date - rental_date::date), 2) "Средняя продолжительность, дней"
+round(AVG(date(return_date) - date(rental_date)), 2) "Средняя продолжительность, дней"
 FROM customer
 JOIN rental USING (customer_id)
 GROUP BY customer_id

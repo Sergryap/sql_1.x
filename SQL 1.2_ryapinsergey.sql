@@ -32,8 +32,8 @@ ORDER BY city;
 --и стоимость которых превышает 1.00.
 --Платежи нужно отсортировать по дате платежа.
 SELECT * FROM payment
-WHERE payment_date BETWEEN '17/06/2005'::date AND '19/06/2005'::date
-AND amount <= 1
+WHERE date(payment_date) BETWEEN '17/06/2005'::date AND '19/06/2005'::date
+AND amount >1
 ORDER BY payment_date;
 
 
@@ -58,7 +58,7 @@ LIMIT 10;
 --  4. Дату последнего обновления записи о покупателе (без времени)
 --Каждой колонке задайте наименование на русском языке.
 SELECT CONCAT(first_name, ' ', last_name) "Фамили и имя", email "Электронная почта",
-CHARACTER_LENGTH(email) "Длина email", last_update "Дата обновления"
+CHARACTER_LENGTH(email) "Длина email", date(last_update) "Дата обновления"
 FROM customer;
 
 
